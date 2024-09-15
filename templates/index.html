@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+</head>
+<body>
+    <div id="game">
+        <h2>Jogo Perfil</h2>
+
+        <!-- Botão Coin Flip -->
+        <button id="coinflipButton">Cara ou Coroa</button>
+
+        <!-- Botão Atualizar Pontuação -->
+        <button id="atualizarPontuacao">Atualizar Pontuação</button>
+
+        <!-- Área da Carta com Dicas -->
+        <div id="cartas">
+            <h3>Tema: <span id="temaAtual"></span></h3>
+            <ul id="dicasList"></ul>
+        </div>
+
+        <!-- Placar -->
+        <div id="scoreboard">
+            <div id="team1">Time 1: 0</div>
+            <div id="team2">Time 2: 0</div>
+        </div>
+
+        <!-- Botões de Acerto e Erro -->
+        <div id="controls">
+            <button id="botaoAcerto" disabled>Acerto</button>
+            <button id="botaoErro" disabled>Erro</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

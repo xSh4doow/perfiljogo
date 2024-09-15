@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#game {
+    margin-top: 50px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#scoreboard {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+#scoreboard div {
+    font-size: 1.5em;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#cartas {
+    margin: 30px 0;
+}
+
+#cartas h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+#dicasList {
+    list-style: none;
+    padding: 0;
+}
+
+#dicasList li {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+#controls {
+    margin-top: 20px;
+}
+
+#controls button {
+    background-color: #17a2b8;
+}
+
+#controls button:hover {
+    background-color: #138496;
+}
