@@ -1,11 +1,15 @@
+import eventlet
+eventlet.monkey_patch()  # Patch necessário para que o eventlet funcione corretamente
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit, join_room
 import random
 import json
 
+
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app)
+socketio = SocketIO(app, async_mode='eventlet')  # Usa o eventlet como modo assíncrono
 
 # Carregar as dicas a partir do arquivo JSON com codificação UTF-8
 with open('dicas.json', 'r', encoding='utf-8') as f:
@@ -170,4 +174,4 @@ def handle_atualizar_pontuacao(data):
 
 
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, host='0.0.0.0', port=5000)
