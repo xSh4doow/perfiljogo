@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.body.style.backgroundColor = 'red';  // Mudar fundo para vermelho
             document.getElementById('botaoAcerto').disabled = false;  // Habilitar botões
             document.getElementById('botaoErro').disabled = false;   // para o perguntador
+            document.getElementById('botaoPular').disabled = false;  // Habilitar botão de pular
 
             // Mostrar tema, resposta e dicas para o perguntador
             document.getElementById('temaAtual').innerText = `Tema: ${data.tema} - Resposta: ${data.cartas.resposta}`;
@@ -47,13 +48,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.body.style.backgroundColor = '';  // Fundo normal para o respondedor
             document.getElementById('botaoAcerto').disabled = true;  // Desabilitar botões
             document.getElementById('botaoErro').disabled = true;   // para o respondedor
+            document.getElementById('botaoPular').disabled = true;  // Desabilitar botão de pular
 
             document.getElementById('temaAtual').innerText = '';  // Esconder tema e resposta do respondedor
             document.getElementById('dicasList').innerHTML = '';  // Esconder dicas do respondedor
         }
     });
 
-    // Botões de acerto e erro, habilitados apenas para o perguntador
+    // Botões de acerto, erro e pular, habilitados apenas para o perguntador
     document.getElementById('botaoAcerto').addEventListener('click', function() {
         if (timePerguntador) {
             socket.emit('jogar', { acao: 'acerto', sala: sala });
@@ -63,6 +65,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('botaoErro').addEventListener('click', function() {
         if (timePerguntador) {
             socket.emit('jogar', { acao: 'erro', sala: sala });
+        }
+    });
+
+    // Evento para o botão de Pular Carta
+    document.getElementById('botaoPular').addEventListener('click', function() {
+        if (timePerguntador) {
+            socket.emit('pular_carta', { sala: sala });
         }
     });
 
@@ -93,7 +102,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Fim de jogo
     socket.on('fim_jogo', function(data) {
-        alert("Fim de jogo! O vencedor é: " + data.vez);
+        alert("Fim de jogo!");
     });
 
     // Atualizar o placar
